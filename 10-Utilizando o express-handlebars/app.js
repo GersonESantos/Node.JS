@@ -19,4 +19,8 @@ app.get('/', (req, res) => {
 app.get('/sobre', (req, res) => {
     res.render('sobre');
 });
+app.get('/formulario', (req, res) => {
+    res.render('formulario');
+});
+
 app.listen(3000);
