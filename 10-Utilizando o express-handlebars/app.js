@@ -16,5 +16,7 @@ app.get('/', (req, res) => {
     res.render('inicio');
 });
 
-
+app.get('/sobre', (req, res) => {
+    res.render('sobre');
+});
 app.listen(3000);
