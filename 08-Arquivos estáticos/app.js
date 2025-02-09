@@ -1,8 +1,10 @@
 const express = require('express')
 const app = express()
+// especificando o diretório onde estão os arquivos estáticos
+app.use(express.static(__dirname + '/publico'))
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/pagina.html')
+  res.sendFile(__dirname + '/pagina.html');
   
 })
 
