@@ -1,21 +1,45 @@
-// Importar os módulos
+// Importar módulo express
 var express = require('express');
-var fetch = require('node-fetch');
 
-// App
-var app = express();
 
-// Rota
-app.get('/', function(req, res){
+const { engine } = require('express-handlebars');
 
-    fetch('https://jsonplaceholder.typicode.com/users')
-    .then(resposta => resposta.json())
-    .then(resposta => console.table(resposta))
+const app = express();
 
-    res.end();
+
+app.engine('handlebars', engine());
+
+app.set('view engine', 'handlebars');
+app.set('views', './views');
+
+app.get('/', (req, res) => {
+    res.render('inicio');
 });
 
-// Servidor
-listen(3000, () => {
-    console.log('Servidor rodando na porta 3000');
+app.get('/sobre', (req, res) => {
+    res.render('sobre');
 });
+app.get('/formulario', (req, res) => {
+    res.render('formulario');
+});
+app.get('/laco', (req, res) => {
+    res.render('laco', {gostaDeNode: false});
+});
+app.get('/foreach', (req, res) => {
+
+    let pessoas = [
+
+        {nome: 'João', idade: 25},
+        {nome: 'Maria', idade: 30},
+        {nome: 'José', idade: 28},
+        {nome: 'Ana', idade: 35},
+        {nome: 'Pedro', idade: 40},
+        {nome: 'Paula', idade: 22},
+        {nome: 'Carlos', idade: 33}
+    ];
+    res.render('foreach', {dados: pessoas});
+});
+
+app.listen(8080, () => {
+    console.log('Rodando app listening at http://localhost:8080');
+  });
