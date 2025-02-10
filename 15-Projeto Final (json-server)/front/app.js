@@ -1,10 +1,15 @@
 var express = require('express');
-var expressHandlebars = require('express-handlebars');
+
+
+const { engine } = require('express-handlebars');
 var bodyParser = require('body-parser');
 
 var app = express();
 
-app.engine('handlebars', expressHandlebars({defaultLayout: 'principal'}));
+
+
+
+app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './views');
 
