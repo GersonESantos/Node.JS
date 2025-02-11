@@ -1,0 +1,19 @@
+{
+    "cursos":  [
+        {
+            "id": 1,
+            "nome": "Curso de React",
+            "preco": "R$ 100,00"
+        },
+        {
+            "id": 2,
+            "nome": "Curso de Node",
+            "preco": "R$ 50,00"
+        },
+        {
+            "id": 3,
+            "nome": "Curso de Python",
+            "preco": "R$ 150,00"
+        }
+    ]
+}
