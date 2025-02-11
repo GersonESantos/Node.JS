@@ -1,5 +1,6 @@
-<form action="/cadastrar" method="post">
+<form action="/editar" method="post">
     <img src="../imagens/icone.png" alt="Ícone">
+    <input type="text" value={{dados.id}}  name="id" class="form-control" readonly>
     <input type="text" value={{dados.nome}} placeholder="Nome" name="nome" class="form-control">
     <input type='text' value={{dados.idade}} placeholder="Idade" name="idade" class="form-control">
     <input type='submit' value='Editar' class="btn btn-warning btnEditar"> 

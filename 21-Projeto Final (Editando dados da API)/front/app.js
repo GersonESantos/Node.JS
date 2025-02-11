@@ -50,6 +50,19 @@ app.get('/selecionar/:id', (req, res) => {
   .then(response => res.render('selecionar', {dados: response}))
 
 });
+
+app.post('/editar/', (req, res) => {
+  let id = req.params.id;
+  let nome = req.body.nome;
+  let idade = req.body.idade;
+  let dados = {'nome': nome, 'idade': idade};
+  fetch('http://localhost:3000/clientes/'+id, {
+    method: 'PUT',
+    body: JSON.stringify({nome: nome, idade: idade}),
+    headers: { 'Content-Type': 'application/json' }
+  })
+  .then(res.redirect('/'));
+});
 app.listen(8080, () => {
   console.log('Server is running on http://localhost:8080');
 });
