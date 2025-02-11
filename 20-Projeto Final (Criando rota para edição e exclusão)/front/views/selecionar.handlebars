@@ -1,0 +1,8 @@
+<form action="/cadastrar" method="post">
+    <img src="../imagens/icone.png" alt="Ícone">
+    <input type="text" value={{dados.nome}} placeholder="Nome" name="nome" class="form-control">
+    <input type='text' value={{dados.idade}} placeholder="Idade" name="idade" class="form-control">
+    <input type='submit' value='Editar' class="btn btn-warning btnEditar"> 
+    <a href="/remover/{{dados.id}}" class="btn btn-danger">Remover</a>
+    <a href="/" class="btn btn-secondary">Cancelar</a>
+</form>
