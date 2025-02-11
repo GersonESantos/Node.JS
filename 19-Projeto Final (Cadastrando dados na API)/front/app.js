@@ -30,6 +30,18 @@ app.get('/', (req, res) => {
     .then(response => res.render('inicio', {dados: response}))
 });
 
+app.post('/cadastrar', (req, res) => {
+  let nome = req.body.nome;
+  let idade = req.body.idade;
+  let dados = {'nome': nome, 'idade': idade};
+  fetch('http://localhost:3000/clientes', {
+    method: 'POST',
+    body: JSON.stringify(dados),
+    headers: { 'Content-Type': 'application/json' }
+  })
+  .then(res.redirect('/'));
+}
+);
 
 app.listen(8080, () => {
   console.log('Server is running on http://localhost:8080');
