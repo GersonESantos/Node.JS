@@ -63,6 +63,14 @@ app.post('/editar', (req, res) => {
   })
   .then(res.redirect('/'));
 });
+
+app.get('/remover/:id', function(req, res){
+    let id = req.params.id;
+
+    fetch('http://localhost:3000/clientes/'+id, {method:'DELETE'})
+    .then(res.redirect('/'));
+});
+
 app.listen(8080, () => {
   console.log('Server is running on http://localhost:8080');
 });
