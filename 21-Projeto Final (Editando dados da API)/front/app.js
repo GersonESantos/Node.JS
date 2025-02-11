@@ -51,11 +51,11 @@ app.get('/selecionar/:id', (req, res) => {
 
 });
 
-app.post('/editar/', (req, res) => {
-  let id = req.params.id;
+app.post('/editar', (req, res) => {
+  let id = req.body.id;
   let nome = req.body.nome;
   let idade = req.body.idade;
-  let dados = {'nome': nome, 'idade': idade};
+  
   fetch('http://localhost:3000/clientes/'+id, {
     method: 'PUT',
     body: JSON.stringify({nome: nome, idade: idade}),
