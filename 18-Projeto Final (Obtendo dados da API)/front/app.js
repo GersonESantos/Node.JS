@@ -25,9 +25,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
-    fetch('http://localhost:3000/cursos',{method: 'GET'})
+    fetch('http://localhost:3000/clientes',{method: 'GET'})
     .then(response => response.json())
-    .then(response => res.render('inicio', {cursos: response}))
+    .then(response => res.render('inicio', {dados: response}))
 });
 
 

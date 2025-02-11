@@ -1,23 +1,23 @@
 <form action="">
     <img src="imagens/icone.png" alt="Ícone">
     <input type="text" placeholder="Nome" class="form-control">
-    <input type='text' placeholder="Preco" class="form-control">
+    <input type='text' placeholder="Idade" class="form-control">
     <input type='submit' value='Enviar' class="btn btn-primary"> 
 </form>
 <table class="table table-striped">
     <thead>
         <tr>
             <th>Nome</th>
-            <th>Preco</th>
+            <th>Idade</th>
             <th>Selecionar</th>
         </tr>
     </thead>
 <tbody>
-    {{#each cursos}}
+    {{#each dados}}
     <tr>
         <td>{{nome}}</td>
-        <td>{{preco}}</td>
-        <td><a href="#">Selecionar</a></td>
+        <td>{{idade}}</td>
+        <td><a href="selecionar/{{id}}">Selecionar</a></td>
     </tr>
    {{/each}}
 </tbody>
