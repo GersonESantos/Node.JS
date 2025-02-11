@@ -1,11 +1,10 @@
+// Importar módulos
 var express = require('express');
-
-
 const { engine } = require('express-handlebars');
 var bodyParser = require('body-parser');
-
 var fetch = require('node-fetch');
 
+// App
 var app = express();
 
 
@@ -55,8 +54,8 @@ app.post('/editar', (req, res) => {
   let idade = req.body.idade;
   
   fetch('http://localhost:3000/clientes/'+id, {
-    method: 'PUT',
-    body: JSON.stringify({nome: nome, idade: idade}),
+    method:'PUT',
+    body: JSON.stringify({'nome': nome, 'idade': idade}),
     headers: { 'Content-Type': 'application/json' }
   })
   .then(res.redirect('/'));
