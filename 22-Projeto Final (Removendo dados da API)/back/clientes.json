@@ -1,0 +1,39 @@
+{
+  "clientes": [
+    {
+      "nome": "Carlos nacimento",
+      "idade": "40",
+      "id": "1"
+    },
+    {
+      "nome": "Gerso Eustaquio",
+      "idade": "57",
+      "id": "2"
+    },
+    {
+      "id": "3",
+      "nome": "miara",
+      "idade": "15"
+    },
+    {
+      "id": "5",
+      "nome": "Gerson",
+      "idade": "67"
+    },
+    {
+      "id": "92c2",
+      "nome": "jessica",
+      "idade": "23"
+    },
+    {
+      "nome": "pedro",
+      "idade": "24",
+      "id": "5dc0"
+    },
+    {
+      "id": "c97a",
+      "nome": "joao",
+      "idade": "17"
+    }
+  ]
+}
