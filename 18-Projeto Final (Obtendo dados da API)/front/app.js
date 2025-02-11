@@ -4,6 +4,8 @@ var express = require('express');
 const { engine } = require('express-handlebars');
 var bodyParser = require('body-parser');
 
+var fetch = require('node-fetch');
+
 var app = express();
 
 
@@ -23,12 +25,14 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
-    res.render('inicio');
+    fetch('http://localhost:3000/cursos',{method: 'GET'})
+    .then(response => response.json())
+    .then(response => res.render('inicio', {cursos: response}))
 });
 
 
-app.listen(3000, () => {
-  console.log('Server is running on http://localhost:3000');
+app.listen(8080, () => {
+  console.log('Server is running on http://localhost:8080');
 });
 
 
