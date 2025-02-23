@@ -1,18 +1,14 @@
-// Importações necessárias
 const { ApolloServer, gql } = require('apollo-server');
-
-// Dados iniciais (simulando um banco de dados)
-const users = [
-  { id: '1', name: 'John Doe', email: 'john@example.com' },
-  { id: '2', name: 'Jane Smith', email: 'jane@example.com' },
-];
+const connection = require('./database');
 
 // Definindo o esquema GraphQL
 const typeDefs = gql`
   type User {
     id: ID!
-    name: String!
-    email: String!
+    username: String!
+    passwrd: String!
+    created_at: String!
+    updated_at: String!
   }
 
   type Query {
@@ -21,25 +17,30 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(name: String!, email: String!): User!
+    addUser(username: String!, passwrd: String!): User!
   }
 `;
 
 // Resolvers (funções que implementam as operações do esquema)
 const resolvers = {
   Query: {
-    users: () => users,
-    user: (parent, args) => users.find(user => user.id === args.id),
+    users: async () => {
+      const [rows] = await connection.promise().query('SELECT * FROM users');
+      return rows;
+    },
+    user: async (parent, args) => {
+      const [rows] = await connection.promise().query('SELECT * FROM users WHERE id = ?', [args.id]);
+      return rows[0];
+    },
   },
   Mutation: {
-    addUser: (parent, args) => {
-      const newUser = {
-        id: String(users.length + 1),
-        name: args.name,
-        email: args.email,
-      };
-      users.push(newUser);
-      return newUser;
+    addUser: async (parent, args) => {
+      const [result] = await connection.promise().query(
+        'INSERT INTO users (username, passwrd) VALUES (?, ?)',
+        [args.username, args.passwrd]
+      );
+      const [newUser] = await connection.promise().query('SELECT * FROM users WHERE id = ?', [result.insertId]);
+      return newUser[0];
     },
   },
 };
