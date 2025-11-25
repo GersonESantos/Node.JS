@@ -1,12 +1,12 @@
 const express = require('express')
 const app = express()
-
+// 
 app.get('/hello', (req, res) => {
-     //  return res.send('Hello World!')
-    // return res.json({ message: 'Hello World!' })
+    const nome = req.query.nome
+
       return res.status(200).json({ 
         title: 'Hello Word', 
-        message: 'This is a JSON response'
+        message: 'Ola ${nome} tudo bem?'
       })
 
        })
